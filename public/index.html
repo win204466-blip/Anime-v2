@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Zeeniatt - Streaming Anime Gratis</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class="sticky-header">
+    <div class="header-content">
+      <h1 class="header-title"><i class="bi bi-tv-fill me-2"></i>Zeeniatt</h1>
+      <div class="header-spacer"></div>
+      <i class="bi bi-search search-icon" onclick="toggleSearch()"></i>
+      <i class="bi bi-list menu-icon" onclick="toggleMenu()"></i>
+    </div>
+  </div>
+
+  <div class="toggle-search" id="toggleSearch">
+    <input type="text" id="searchInput" placeholder="Cari anime berdasarkan nama..." oninput="searchAnime()">
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMenu()"></div>
+
+  <div class="sidebar-menu" id="sidebarMenu">
+    <a href="index.html" class="menu-item">
+      <i class="bi bi-house-door-fill"></i>
+      <span>Anime</span>
+    </a>
+    <a href="donghua.html" class="menu-item">
+      <i class="bi bi-stars"></i>
+      <span>Donghua</span>
+    </a>
+    <a href="komik.html" class="menu-item">
+      <i class="bi bi-book-fill"></i>
+      <span>Komik</span>
+    </a>
+    <a href="#" class="menu-item" onclick="goToAbout(); return false;">
+      <i class="bi bi-info-circle-fill"></i>
+      <span>Tentang</span>
+    </a>
+    <a href="#" class="menu-item" onclick="goToSupport(); return false;">
+      <i class="bi bi-heart-fill"></i>
+      <span>Support Admin</span>
+    </a>
+  </div>
+
+  <div class="main-content" id="mainContent">
+    <div class="container-fluid px-0">
+
+      <div id="page-anime">
+        <div class="banner-slider" id="bannerSlider"></div>
+
+        <div class="container">
+          <h3 class="section-title">Popular</h3>
+          <div id="popularList" class="d-flex flex-wrap" style="gap: 8px;"></div>
+        </div>
+
+        <div class="container">
+          <h3 class="section-title">Daftar Anime</h3>
+          <div id="animeList" class="d-flex flex-wrap" style="gap: 8px;"></div>
+        </div>
+      </div>
+
+      <div id="page-about" style="display: none;">
+        <div class="container">
+          <button class="btn btn-outline-light mb-3" onclick="goToHome()">
+            <i class="bi bi-arrow-left"></i> Kembali
+          </button>
+
+          <div class="about-section">
+            <h2><i class="bi bi-tv-fill me-2"></i>Tentang Zeeniatt</h2>
+            <p class="lead">Zeeniatt adalah platform streaming anime gratis! Nikmati ribuan anime favorit kamu kapan saja, dimana saja.</p>
+
+            <div class="about-features">
+              <div class="feature-item">
+                <i class="bi bi-play-circle-fill"></i>
+                <h5>Streaming Gratis</h5>
+                <p class="small">Nonton anime sepuasnya tanpa biaya apapun</p>
+              </div>
+              <div class="feature-item">
+                <i class="bi bi-collection-play-fill"></i>
+                <h5>Koleksi Lengkap</h5>
+                <p class="small">Ribuan anime dari berbagai genre tersedia</p>
+              </div>
+              <div class="feature-item">
+                <i class="bi bi-lightning-fill"></i>
+                <h5>Update Cepat</h5>
+                <p class="small">Episode terbaru langsung tersedia</p>
+              </div>
+              <div class="feature-item">
+                <i class="bi bi-heart-fill"></i>
+                <h5>Komunitas Aktif</h5>
+                <p class="small">Bergabung dengan pecinta anime lainnya</p>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-4" style="border-top: 1px solid rgba(75, 85, 99, 0.2);">
+              <h5 class="mb-3"><i class="bi bi-exclamation-circle me-2"></i>Informasi Penting</h5>
+              <p class="text-light small mb-2">
+                <strong>Tentang Iklan:</strong>
+              </p>
+              <p class="text-light small">
+                Beberapa video mungkin mengandung iklan dari penyedia layanan streaming pihak ketiga. Kami tidak dapat mengontrol iklan tersebut sepenuhnya, jadi mohon maklum ya. Iklan membantu penyedia layanan untuk tetap menyediakan konten gratis.
+              </p>
+              <p class="text-light small mt-3 mb-2">
+                <strong>Tentang Kecepatan Loading:</strong>
+              </p>
+              <p class="text-light small">
+                Website ini masih baru dan dalam tahap pengembangan. Data anime kadang keluar agak lama karena server masih terbatas. Mohon bersabar ya saat loading, dan terima kasih atas pengertiannya! 🙏
+              </p>
+            </div>
+
+            <div class="mt-4 pt-4" style="border-top: 1px solid rgba(75, 85, 99, 0.2);">
+              <h5 class="mb-3"><i class="bi bi-exclamation-triangle me-2"></i>Kekurangan & Batasan</h5>
+              <p class="text-light small">
+                Website ini masih dalam tahap pengembangan, jadi mungkin ada beberapa hal yang belum sempurna:
+              </p>
+              <ul class="text-light small" style="list-style-position: inside;">
+                <li>Koleksi anime masih terbatas dan terus ditambah</li>
+                <li>Beberapa fitur mungkin masih dalam pengembangan</li>
+                <li>Server kadang lambat saat jam sibuk</li>
+                <li>Subtitle mungkin belum tersedia untuk semua anime</li>
+                <li>Ada beberapa bug yang sedang diperbaiki</li>
+              </ul>
+              <p class="text-light small mt-3">
+                Mohon maklum ya, dan terima kasih atas pengertiannya! 🙏
+              </p>
+            </div>
+
+            <div class="mt-4 pt-4" style="border-top: 1px solid rgba(75, 85, 99, 0.2);">
+              <h5 class="mb-3"><i class="bi bi-envelope-heart me-2"></i>Request Anime</h5>
+              <p class="text-light small">
+                Ada anime yang pengen kamu tonton tapi belum tersedia? Tenang, kamu bisa request anime favorit kamu!
+              </p>
+              <p class="text-light small">
+                Kalau mau request anime, bisa langsung lewat <a href="https://saweria.co/Zeeniatt" target="_blank" style="color: #dc2626; text-decoration: none; font-weight: 600;">Saweria</a> dengan kasih pesan anime apa yang kamu mau. Nanti admin akan usahakan untuk upload anime yang kamu request. 
+              </p>
+              <p class="text-light small" style="opacity: 0.7;">
+                <i class="bi bi-info-circle me-1"></i>Request bersifat sukarela ya, tidak ada paksaan sama sekali. Kalau support via Saweria, itu sangat membantu untuk maintenance website dan upload konten baru.
+              </p>
+            </div>
+
+            <div class="mt-4 pt-4" style="border-top: 1px solid rgba(75, 85, 99, 0.2);">
+              <p class="text-light">Dibuat dengan ❤️ untuk para pecinta anime di Indonesia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="page-support" style="display: none;">
+        <div class="container">
+          <button class="btn btn-outline-light mb-3" onclick="goToHome()">
+            <i class="bi bi-arrow-left"></i> Kembali
+          </button>
+
+          <div class="saweria-container">
+            <h2><i class="bi bi-heart-fill me-2" style="color: #FF6B6B;"></i>Support Admin</h2>
+            <p class="mt-3 mb-2">Bantu website ini terus berkembang dengan memberikan dukungan melalui Saweria!</p>
+            <p class="text-light small mb-3">Setiap dukungan Anda sangat berarti untuk pengembangan fitur baru dan maintenance website. 🙏</p>
+
+            <a href="https://saweria.co/Zeeniatt" target="_blank" class="saweria-btn">
+              <i class="bi bi-gift-fill me-2"></i>Dukung Sekarang
+            </a>
+
+            <div class="mt-4 pt-4" style="border-top: 1px solid rgba(124, 92, 255, 0.2);">
+              <h5 class="mb-3"><i class="bi bi-star-fill me-2" style="color: #FFD700;"></i>Terima Kasih Untuk Para Supporter</h5>
+              <div id="supporterList">
+                <p class="text-light small">Daftar supporter akan muncul di sini secara realtime</p>
+                <p class="text-light small mt-2">
+                  <i class="bi bi-info-circle me-1"></i>
+                  Untuk menampilkan data real-time dari Saweria, diperlukan backend webhook. Hubungi admin untuk setup backend.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="notificationPrompt" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(26, 28, 34, 0.98); border: 1px solid rgba(220, 38, 38, 0.4); border-radius: 12px; padding: 16px 24px; z-index: 9999; max-width: 90%; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);">
+    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+      <i class="bi bi-bell-fill" style="color: #dc2626; font-size: 1.5rem;"></i>
+      <div style="flex: 1; min-width: 200px;">
+        <p style="margin: 0; color: #ffffff; font-weight: 600; font-size: 0.9rem;">Dapatkan Notifikasi Anime Baru!</p>
+        <p style="margin: 0; color: #b0b0c0; font-size: 0.75rem;">Kami akan memberi tahu kamu saat ada anime baru</p>
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button onclick="enableNotifications()" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer;">
+          Aktifkan
+        </button>
+        <button onclick="dismissNotificationPrompt()" style="background: rgba(75, 85, 99, 0.3); color: #9ca3af; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer;">
+          Nanti
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="notification.js"></script>
+  <script src="script.js"></script>
+  <script>
+    function showNotificationPrompt() {
+      const hasShown = localStorage.getItem('notificationPromptShown');
+      const permission = localStorage.getItem('notificationPermission');
+
+      if (!hasShown && permission !== 'granted' && permission !== 'denied') {
+        setTimeout(() => {
+          document.getElementById('notificationPrompt').style.display = 'block';
+          document.getElementById('notificationPrompt').style.animation = 'slideUp 0.3s ease';
+        }, 5000);
+      }
+    }
+
+    async function enableNotifications() {
+      const granted = await requestNotificationPermission();
+      if (granted) {
+        document.getElementById('notificationPrompt').style.display = 'none';
+        showNotification('✅ Notifikasi Aktif! Kami akan memberi tahu kamu saat ada anime baru');
+      } else {
+        alert('Izinkan notifikasi di pengaturan browser kamu untuk menerima update anime baru');
+      }
+      localStorage.setItem('notificationPromptShown', 'true');
+    }
+
+    function dismissNotificationPrompt() {
+      document.getElementById('notificationPrompt').style.display = 'none';
+      localStorage.setItem('notificationPromptShown', 'true');
+    }
+
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: rgba(26, 28, 34, 0.95);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        border: 1px solid rgba(34, 197, 94, 0.4);
+        z-index: 9999;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        animation: slideIn 0.3s ease;
+      `;
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      setTimeout(() => notification.remove(), 3000);
+    }
+
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideUp {
+        from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+        to { transform: translateX(-50%) translateY(0); opacity: 1; }
+      }
+    `;
+    document.head.appendChild(style);
+
+    showNotificationPrompt();
+  </script>
+</body>
+</html>
