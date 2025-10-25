@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Baca Komik - Zeeniatt</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    body {
+      background: #1a1a1a;
+    }
+    .reader-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .reader-header {
+      background: rgba(26, 28, 34, 0.95);
+      border: 1px solid rgba(220, 38, 38, 0.4);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .reader-images img {
+      width: 100%;
+      display: block;
+      margin-bottom: 5px;
+      border-radius: 4px;
+    }
+    .reader-nav-sticky {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+    }
+    .nav-btn-float {
+      background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+    }
+    .nav-btn-float:hover {
+      background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+    }
+    .nav-btn-float:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="reader-container">
+    <button class="btn btn-outline-light mb-3" onclick="goBack()">
+      <i class="bi bi-arrow-left"></i> Kembali ke Detail
+    </button>
+
+    <div class="reader-header">
+      <h4 id="chapterTitle" class="mb-2"></h4>
+      <p id="komikTitle" class="text-light small mb-0"></p>
+    </div>
+
+    <div class="reader-images" id="readerImages">
+      <div class="text-center text-light">Memuat gambar...</div>
+    </div>
+
+    <div class="mt-4 mb-4 d-flex gap-2 justify-content-center flex-wrap">
+      <button class="btn-nav" onclick="previousChapter()" id="prevChapterBtn">
+        <i class="bi bi-skip-backward-fill me-1"></i>Chapter Sebelumnya
+      </button>
+      <button class="btn-nav" onclick="nextChapter()" id="nextChapterBtn">
+        Chapter Selanjutnya<i class="bi bi-skip-forward-fill ms-1"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="reader-nav-sticky">
+    <button class="nav-btn-float" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      <i class="bi bi-arrow-up"></i>
+    </button>
+    <button class="nav-btn-float" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})">
+      <i class="bi bi-arrow-down"></i>
+    </button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="komik-read.js"></script>
+</body>
+</html>
