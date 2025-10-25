@@ -1,0 +1,25 @@
+{
+  "name": "zeeniatt-anime-streaming",
+  "version": "1.0.0",
+  "description": "Platform streaming anime, donghua, dan komik gratis",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "dev": "node api/index.js"
+  },
+  "keywords": [
+    "anime",
+    "streaming",
+    "donghua",
+    "komik"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^22.0.0",
+    "axios": "^1.12.2",
+    "cheerio": "^1.1.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
