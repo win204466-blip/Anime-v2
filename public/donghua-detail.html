@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Detail Donghua - Zeeniatt</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class="sticky-header">
+    <div class="header-content">
+      <h1 class="header-title"><i class="bi bi-stars me-2"></i>Zeeniatt</h1>
+      <div class="header-spacer"></div>
+      <i class="bi bi-search search-icon" onclick="toggleSearch()"></i>
+      <i class="bi bi-list menu-icon" onclick="toggleMenu()"></i>
+    </div>
+  </div>
+
+  <div class="toggle-search" id="toggleSearch">
+    <input type="text" id="searchInput" placeholder="Cari donghua berdasarkan nama..." oninput="searchDonghua()">
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMenu()"></div>
+
+  <div class="sidebar-menu" id="sidebarMenu">
+    <a href="index.html" class="menu-item">
+      <i class="bi bi-house-door-fill"></i>
+      <span>Anime</span>
+    </a>
+    <a href="donghua.html" class="menu-item">
+      <i class="bi bi-stars"></i>
+      <span>Donghua</span>
+    </a>
+    <a href="komik.html" class="menu-item">
+      <i class="bi bi-book-fill"></i>
+      <span>Komik</span>
+    </a>
+    <a href="#" class="menu-item" onclick="goToAbout(); return false;">
+      <i class="bi bi-info-circle-fill"></i>
+      <span>Tentang</span>
+    </a>
+    <a href="#" class="menu-item" onclick="goToSupport(); return false;">
+      <i class="bi bi-heart-fill"></i>
+      <span>Support Admin</span>
+    </a>
+  </div>
+
+  <div class="main-content" id="mainContent">
+    <div class="container-fluid px-0">
+      <div class="container">
+        <button class="btn btn-outline-light mb-3" onclick="window.location.href='donghua.html'">
+          <i class="bi bi-arrow-left"></i> Kembali
+        </button>
+
+        <div id="donghuaDetail" class="card p-3 mb-4"></div>
+
+        <div class="card p-3 mb-4">
+          <h5 class="mb-3"><i class="bi bi-star-fill me-2" style="color: #FFD700;"></i>Aksi Cepat</h5>
+          <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-sm btn-outline-light" onclick="toggleFavorite()">
+              <i class="bi bi-heart-fill me-1" id="favoriteIcon"></i>
+              <span id="favoriteText">Tambah ke Favorit</span>
+            </button>
+            <button class="btn btn-sm btn-outline-light" onclick="shareAnime()">
+              <i class="bi bi-share-fill me-1"></i>
+              Share Donghua
+            </button>
+            <button class="btn btn-sm btn-outline-light" onclick="downloadEpisodeList()">
+              <i class="bi bi-download me-1"></i>
+              Download Daftar Episode
+            </button>
+          </div>
+        </div>
+
+        <div id="episodeList" class="card p-3"></div>
+      </div>
+
+      <div id="page-about" style="display: none;">
+        <div class="container">
+          <button class="btn btn-outline-light mb-3" onclick="hideAbout()">
+            <i class="bi bi-arrow-left"></i> Kembali
+          </button>
+
+          <div class="about-section">
+            <h2><i class="bi bi-tv-fill me-2"></i>Tentang Zeeniatt</h2>
+            <p class="lead">Zeeniatt adalah platform streaming anime gratis! Nikmati ribuan anime favorit kamu kapan saja, dimana saja.</p>
+
+            <div class="about-features">
+              <div class="feature-item">
+                <i class="bi bi-play-circle-fill"></i>
+                <h5>Streaming Gratis</h5>
+                <p class="small">Nonton anime sepuasnya tanpa biaya apapun</p>
+              </div>
+              <div class="feature-item">
+                <i class="bi bi-collection-play-fill"></i>
+                <h5>Koleksi Lengkap</h5>
+                <p class="small">Ribuan anime dari berbagai genre tersedia</p>
+              </div>
+              <div class="feature-item">
+                <i class="bi bi-lightning-fill"></i>
+                <h5>Update Cepat</h5>
+                <p class="small">Episode terbaru langsung tersedia</p>
+              </div>
+              <div class="feature-item">
+                <i class="bi bi-heart-fill"></i>
+                <h5>Komunitas Aktif</h5>
+                <p class="small">Bergabung dengan pecinta anime lainnya</p>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-4" style="border-top: 1px solid rgba(75, 85, 99, 0.2);">
+              <p class="text-light">Dibuat dengan <i class="bi bi-heart-fill" style="color: #dc2626;"></i> untuk para pecinta anime di Indonesia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="page-support" style="display: none;">
+        <div class="container">
+          <button class="btn btn-outline-light mb-3" onclick="hideSupport()">
+            <i class="bi bi-arrow-left"></i> Kembali
+          </button>
+
+          <div class="saweria-container">
+            <h2><i class="bi bi-heart-fill me-2" style="color: #FF6B6B;"></i>Support Admin</h2>
+            <p class="mt-3 mb-2">Bantu website ini terus berkembang dengan memberikan dukungan melalui Saweria!</p>
+            <p class="text-light small mb-3">Setiap dukungan Anda sangat berarti untuk pengembangan fitur baru dan maintenance website. </p>
+
+            <a href="https://saweria.co/Zeeniatt" target="_blank" class="saweria-btn">
+              <i class="bi bi-gift-fill me-2"></i>Dukung Sekarang
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="donghua-detail.js"></script>
+</body>
+</html>
