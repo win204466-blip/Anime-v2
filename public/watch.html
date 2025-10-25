@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Nonton Anime - Zeeniatt</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class="sticky-header">
+    <div class="header-content">
+      <h1 class="header-title"><i class="bi bi-tv-fill me-2"></i>Zeeniatt</h1>
+      <div class="header-spacer"></div>
+      <i class="bi bi-moon-fill theme-icon" onclick="toggleDarkMode()" id="themeIcon"></i>
+      <i class="bi bi-list menu-icon" onclick="toggleMenu()"></i>
+    </div>
+  </div>
+
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleMenu()"></div>
+
+  <div class="sidebar-menu" id="sidebarMenu">
+    <a href="index.html" class="menu-item">
+      <i class="bi bi-house-door-fill"></i>
+      <span>Anime</span>
+    </a>
+    <a href="donghua.html" class="menu-item">
+      <i class="bi bi-stars"></i>
+      <span>Donghua</span>
+    </a>
+    <a href="komik.html" class="menu-item">
+      <i class="bi bi-book-fill"></i>
+      <span>Komik</span>
+    </a>
+    <a href="#" class="menu-item" onclick="goToDetail(); return false;">
+      <i class="bi bi-info-circle-fill"></i>
+      <span>Info Anime</span>
+    </a>
+  </div>
+
+  <div class="main-content" id="mainContent">
+    <div class="container">
+      <button class="btn btn-outline-light mb-3" onclick="goBack()">
+        <i class="bi bi-arrow-left"></i> Kembali
+      </button>
+
+      <div class="watch-container">
+        <div class="watch-main">
+          <div id="watchVideoContainer" class="video-player-container"></div>
+
+          <div class="resolution-control-box mb-3">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+              <div>
+                <h5 class="mb-1" id="watchEpisodeTitle"></h5>
+                <p class="text-light small mb-0" id="watchEpisodeDesc"></p>
+              </div>
+              <div class="d-flex gap-2 flex-wrap align-items-center">
+                <div class="resolution-selector-wrapper">
+                  <select id="resolutionSelector" onchange="changeResolution()">
+                    <option value="">🎬 Pilih Resolusi</option>
+                    <option value="360">360p - Standard</option>
+                    <option value="480">480p - Good</option>
+                    <option value="720">720p - HD</option>
+                    <option value="1080">1080p - Full HD</option>
+                  </select>
+                </div>
+                <button class="btn-action" onclick="shareEpisode()">
+                  <i class="bi bi-share-fill"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="nav-button-container">
+            <h6 class="mb-3"><i class="bi bi-collection-play me-2"></i>Navigasi Cepat</h6>
+            <div class="d-flex gap-2 flex-wrap">
+              <button class="btn-nav" onclick="previousEpisode()" id="prevEpisodeBtn">
+                <i class="bi bi-skip-backward-fill me-1"></i>Episode Sebelumnya
+              </button>
+              <button class="btn-nav" onclick="nextEpisode()" id="nextEpisodeBtn">
+                Episode Selanjutnya<i class="bi bi-skip-forward-fill ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="watch-sidebar">
+          <div class="watch-anime-info card p-3 mb-3">
+            <img id="watchAnimeImage" src="/placeholder.svg" alt="Anime" class="mb-3" style="width: 100%; border-radius: 8px; max-height: 200px; object-fit: cover;">
+            <h5 id="watchAnimeName"></h5>
+            <p id="watchAnimeDesc" class="small text-light mb-2"></p>
+            <div id="watchAnimeGenres" class="mb-3"></div>
+          </div>
+
+          <div class="watch-episode-list card p-3">
+            <h6 class="mb-3"><i class="bi bi-collection-play me-2"></i>Episode (<span id="totalEpisodes">0</span>)</h6>
+            <div id="watchEpisodeListContainer" style="max-height: 400px; overflow-y: auto;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="watch.js"></script>
+</body>
+</html>
